@@ -8,11 +8,11 @@ function App() {
         <h1 className="header__title">Introduction to React</h1>
       </header>
       <main className="app__main">
-        <div class="cards">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+        <div className="cards">
+          <Card title="Titre 1" />
+          <Card title="Titre 2" />
+          <Card title="Titre 3" />
+          <Card title="Titre 4" />
         </div>
       </main>
       <footer className="app__footer footer">footer</footer>

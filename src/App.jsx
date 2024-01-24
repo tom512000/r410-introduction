@@ -1,5 +1,6 @@
 import React from "react";
-import Card from './components/Card.jsx'
+// eslint-disable-next-line import/extensions
+import Card from "./components/Card.jsx";
 
 function App() {
   return (

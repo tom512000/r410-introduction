@@ -1,18 +1,15 @@
-import React from "react";
-// eslint-disable-next-line import/extensions,import/no-extraneous-dependencies
-import { faCarrot } from "@fortawesome/free-solid-svg-icons/faCarrot";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// eslint-disable-next-line import/extensions,import/no-extraneous-dependencies
-import { faAppleAlt } from "@fortawesome/free-solid-svg-icons/faAppleAlt";
+import React, { useState } from "react";
 // eslint-disable-next-line import/extensions
 import Card from "./components/Card.jsx";
 // eslint-disable-next-line import/extensions
 import Button from "./components/Button.jsx";
 
 function App() {
+  const [cpt, setCpt] = useState(0);
+
   const clickHandler = () => {
-    console.log("Une fonction nommée !");
+    setCpt(cpt + 1);
+    console.log(cpt);
   };
   return (
     <div className="app">
@@ -24,14 +21,14 @@ function App() {
           <Card title="Titre 1">
             Contenu 1<br />
             {/* eslint-disable-next-line no-console */}
-            <Button className="btn" onClick={() => console.log("Une fonction anonyme !")}>
-              <FontAwesomeIcon icon={faCarrot} />
+            <Button className="btn" onClick={clickHandler}>
+              {cpt}
             </Button>
           </Card>
           <Card title="Titre 2">
             Contenu 2<br />
             <Button className="btn" onClick={clickHandler}>
-              <FontAwesomeIcon icon={faAppleAlt} />
+              {cpt}
             </Button>
           </Card>
           <Card title="Titre 3">Contenu 3</Card>

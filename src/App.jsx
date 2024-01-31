@@ -11,6 +11,9 @@ import Card from "./components/Card.jsx";
 import Button from "./components/Button.jsx";
 
 function App() {
+  const clickHandler = () => {
+    console.log("Une fonction nommée !");
+  };
   return (
     <div className="app">
       <header className="app__header header">
@@ -20,13 +23,14 @@ function App() {
         <div className="cards">
           <Card title="Titre 1">
             Contenu 1<br />
-            <Button className="btn">
+            {/* eslint-disable-next-line no-console */}
+            <Button className="btn" onClick={() => console.log("Une fonction anonyme !")}>
               <FontAwesomeIcon icon={faCarrot} />
             </Button>
           </Card>
           <Card title="Titre 2">
             Contenu 2<br />
-            <Button className="btn">
+            <Button className="btn" onClick={clickHandler}>
               <FontAwesomeIcon icon={faAppleAlt} />
             </Button>
           </Card>

@@ -1,6 +1,8 @@
 import React from "react";
 // eslint-disable-next-line import/extensions
 import Card from "./components/Card.jsx";
+// eslint-disable-next-line import/extensions
+import Button from "./components/Button.jsx";
 
 function App() {
   return (
@@ -10,8 +12,14 @@ function App() {
       </header>
       <main className="app__main">
         <div className="cards">
-          <Card title="Titre 1">Contenu 1</Card>
-          <Card title="Titre 2">Contenu 2</Card>
+          <Card title="Titre 1">
+            Contenu 1<br />
+            <Button className="btn">bouton</Button>
+          </Card>
+          <Card title="Titre 2">
+            Contenu 2<br />
+            <Button className="btn">bouton</Button>
+          </Card>
           <Card title="Titre 3">Contenu 3</Card>
           <Card title="Titre 4">Contenu 4</Card>
         </div>

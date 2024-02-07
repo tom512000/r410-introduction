@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons/faCarrot";
 import { faAppleAlt } from "@fortawesome/free-solid-svg-icons/faAppleAlt";
+// eslint-disable-next-line import/extensions
 import Card from "./components/Card.jsx";
+// eslint-disable-next-line import/extensions
 import Counter from "./components/Counter.jsx";
+// eslint-disable-next-line import/extensions
+import FoldableCard from "./components/FoldableCard.jsx";
 
 function App() {
   const [counts, setCounts] = useState({
@@ -33,19 +37,19 @@ function App() {
               onChange={(value) => handleCounterChange("carrot", value)}
             />
           </Card>
-          <Card title="Titre 2">
+          <FoldableCard title="Titre 2">
             Contenu 2<br />
             <Counter
               before={<FontAwesomeIcon icon={faAppleAlt} />}
               className="btn"
               onChange={(value) => handleCounterChange("apple", value)}
             />
-          </Card>
-          <Card title="Titre 3">
+          </FoldableCard>
+          <FoldableCard title="Titre 3">
             Contenu 3<br />
             Total : {counts.carrot + counts.apple}
-          </Card>
-          <Card title="Titre 4">Contenu 4</Card>
+          </FoldableCard>
+          <FoldableCard title="Titre 4">Contenu 4</FoldableCard>
         </div>
       </main>
       <footer className="app__footer footer">footer</footer>

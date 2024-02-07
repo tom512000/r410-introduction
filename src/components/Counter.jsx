@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+// eslint-disable-next-line import/extensions
+import Button from "./Button.jsx";
 
 function Counter({ before, after, className, onChange }) {
   const [cpt, setCpt] = useState(0);
@@ -15,11 +17,11 @@ function Counter({ before, after, className, onChange }) {
   }, [cpt]);
 
   return (
-    <button className={className} type="button" onClick={incrementCounter}>
+    <Button className={className} type="button" onClick={incrementCounter}>
       {before}
       {cpt}
       {after}
-    </button>
+    </Button>
   );
 }
 

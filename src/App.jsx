@@ -1,10 +1,23 @@
-import React from "react";
-// eslint-disable-next-line import/extensions
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCarrot } from "@fortawesome/free-solid-svg-icons/faCarrot";
+import { faAppleAlt } from "@fortawesome/free-solid-svg-icons/faAppleAlt";
 import Card from "./components/Card.jsx";
-// eslint-disable-next-line import/extensions
 import Counter from "./components/Counter.jsx";
 
 function App() {
+  const [counts, setCounts] = useState({
+    carrot: 0,
+    apple: 0,
+  });
+
+  const handleCounterChange = (type, value) => {
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      [type]: value,
+    }));
+  };
+
   return (
     <div className="app">
       <header className="app__header header">
@@ -14,13 +27,24 @@ function App() {
         <div className="cards">
           <Card title="Titre 1">
             Contenu 1<br />
-            <Counter className="btn" />
+            <Counter
+              before={<FontAwesomeIcon icon={faCarrot} />}
+              className="btn"
+              onChange={(value) => handleCounterChange("carrot", value)}
+            />
           </Card>
           <Card title="Titre 2">
             Contenu 2<br />
-            <Counter className="btn" />
+            <Counter
+              before={<FontAwesomeIcon icon={faAppleAlt} />}
+              className="btn"
+              onChange={(value) => handleCounterChange("apple", value)}
+            />
           </Card>
-          <Card title="Titre 3">Contenu 3</Card>
+          <Card title="Titre 3">
+            Contenu 3<br />
+            Total : {counts.carrot + counts.apple}
+          </Card>
           <Card title="Titre 4">Contenu 4</Card>
         </div>
       </main>

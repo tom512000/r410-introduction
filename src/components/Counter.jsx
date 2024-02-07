@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-function Counter({ before, after, className }) {
+function Counter({ before, after, className, onChange }) {
   const [cpt, setCpt] = useState(0);
 
   const incrementCounter = () => {
     setCpt(cpt + 1);
   };
+
+  useEffect(() => {
+    if (onChange !== null) {
+      onChange(cpt);
+    }
+  }, [cpt]);
 
   return (
     <button className={className} type="button" onClick={incrementCounter}>
@@ -21,12 +27,14 @@ Counter.propTypes = {
   before: PropTypes.node,
   after: PropTypes.node,
   className: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 Counter.defaultProps = {
   before: null,
   after: null,
   className: "",
+  onChange: null,
 };
 
 export default Counter;

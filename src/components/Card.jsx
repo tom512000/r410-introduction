@@ -6,10 +6,10 @@ function Card({ title, children, className, onClick }) {
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-    <article className={combinedClassName} onClick={onClick}>
+    <button className={combinedClassName} onClick={onClick}>
       <header className="card__header header__title">{title}</header>
       <section className="card__main">{children}</section>
-    </article>
+    </button>
   );
 }
 

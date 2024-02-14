@@ -9,10 +9,12 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 import Card from "./Card.jsx";
 
 function FoldableCard({ opened, title, children }) {
-  const [isVisible, setOpened] = useState(opened);
+  let isShown = opened;
+  const [isVisible, setOpened] = useState(isShown);
   const [icon, setIcon] = useState(isVisible ? faCircleMinus : faCirclePlus);
 
   const toggleVisibility = () => {
+    isShown = !isShown;
     setOpened(!isVisible);
     setIcon(isVisible ? faCirclePlus : faCircleMinus);
   };

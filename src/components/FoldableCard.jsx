@@ -1,17 +1,32 @@
 import PropTypes from "prop-types";
 // eslint-disable-next-line import/extensions
+import React, { useState } from "react";
+// eslint-disable-next-line import/extensions
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus } from "@fortawesome/free-solid-svg-icons/faCircleMinus";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons/faCirclePlus";
+// eslint-disable-next-line import/extensions
 import Card from "./Card.jsx";
-import { useState } from "react";
 
 function FoldableCard({ opened, title, children }) {
   const [isVisible, setOpened] = useState(opened);
+  const [icon, setIcon] = useState(isVisible ? faCircleMinus : faCirclePlus);
+
+  const toggleVisibility = () => {
+    setOpened(!isVisible);
+    setIcon(isVisible ? faCirclePlus : faCircleMinus);
+  };
 
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <Card
-      title={title}
+      title={
+        <>
+          {title}
+          <FontAwesomeIcon icon={icon} />
+        </>
+      }
       className="foldable"
-      onClick={() => setOpened(!isVisible)}
+      onClick={toggleVisibility}
     >
       {isVisible && children}
     </Card>

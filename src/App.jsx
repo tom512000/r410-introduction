@@ -35,6 +35,7 @@ function App() {
               before={<FontAwesomeIcon icon={faCarrot} />}
               className="btn"
               onChange={(value) => handleCounterChange("carrot", value)}
+              initial={counts.carrot} // Initialisation avec la valeur de la carotte
             />
           </Card>
           <FoldableCard title="Titre 2">
@@ -43,6 +44,7 @@ function App() {
               before={<FontAwesomeIcon icon={faAppleAlt} />}
               className="btn"
               onChange={(value) => handleCounterChange("apple", value)}
+              initial={counts.apple} // Initialisation avec la valeur de la pomme
             />
           </FoldableCard>
           <FoldableCard title="Titre 3">

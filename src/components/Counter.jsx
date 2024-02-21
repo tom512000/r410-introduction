@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 // eslint-disable-next-line import/extensions
 import Button from "./Button.jsx";
 
-function Counter({ before, after, className, onChange }) {
-  const [cpt, setCpt] = useState(0);
+function Counter({ before, after, className, onChange, initial }) {
+  const [cpt, setCpt] = useState(initial);
 
   const incrementCounter = () => {
     setCpt(cpt + 1);
@@ -30,6 +30,7 @@ Counter.propTypes = {
   after: PropTypes.node,
   className: PropTypes.string,
   onChange: PropTypes.func,
+  initial: PropTypes.number,
 };
 
 Counter.defaultProps = {
@@ -37,6 +38,7 @@ Counter.defaultProps = {
   after: null,
   className: "",
   onChange: null,
+  initial: 0,
 };
 
 export default Counter;

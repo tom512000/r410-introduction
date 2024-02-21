@@ -1,8 +1,27 @@
-function Counter() {
+import React from "react";
+import PropTypes from "prop-types";
+import FoldableCard from "./FoldableCard";
+
+function Cards({ cardsData }) {
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
-    <div className="cards" />
+    <div className="cards">
+      {cardsData.map((card) => (
+        <FoldableCard key={card.id} title={card.title}>
+          {card.content}
+        </FoldableCard>
+      ))}
+    </div>
   );
 }
 
-export default Counter;
+Cards.propTypes = {
+  cardsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
+
+export default Cards;

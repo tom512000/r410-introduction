@@ -1,20 +1,20 @@
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-// eslint-disable-next-line import/extensions
-import React from "react";
-// eslint-disable-next-line import/extensions
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleMinus } from "@fortawesome/free-solid-svg-icons/faCircleMinus";
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons/faCirclePlus";
-// eslint-disable-next-line import/extensions
-import Card from "./Card.jsx";
-// eslint-disable-next-line import/extensions
-import useShowable from "../hooks/useShowable.js";
+import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import Card from "./Card";
 
-function FoldableCard({ opened, title, children }) {
-  const { isShown, toggleShown, extendedClassName } = useShowable(
-    opened,
-    "foldable ",
-  );
+function FoldableCard({ title, opened, children, onToggleOpened }) {
+  const [isShown, setIsShown] = useState(opened);
+
+  useEffect(() => {
+    setIsShown(opened);
+  }, [opened]);
+
+  const toggleVisibility = () => {
+    setIsShown((prevIsShown) => !prevIsShown);
+    onToggleOpened();
+  };
 
   const icon = isShown ? faCircleMinus : faCirclePlus;
 
@@ -26,8 +26,8 @@ function FoldableCard({ opened, title, children }) {
           <FontAwesomeIcon icon={icon} />
         </>
       }
-      className={extendedClassName}
-      onClick={toggleShown}
+      className="foldable"
+      onClick={toggleVisibility}
     >
       {isShown && children}
     </Card>
@@ -35,14 +35,14 @@ function FoldableCard({ opened, title, children }) {
 }
 
 FoldableCard.propTypes = {
+  title: PropTypes.string.isRequired,
   opened: PropTypes.bool,
-  title: PropTypes.string,
   children: PropTypes.node,
+  onToggleOpened: PropTypes.func.isRequired,
 };
 
 FoldableCard.defaultProps = {
   opened: false,
-  title: "",
   children: null,
 };
 
